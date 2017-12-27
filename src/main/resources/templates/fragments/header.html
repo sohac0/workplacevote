@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Header template</title>
+    </head>
+    <body>
+
+        <header th:fragment="header">
+            	<ul>
+                  <li><a th:href="@{/main}">Main</a></li>
+		  <li><a th:href="@{/details(username=${#authentication.getPrincipal().getUsername()})}">My account (<span sec:authentication="name">Bob</span>)</a></li>
+                  <li><a th:href="@{/logout}">Logout</a></li>
+		</ul>
+        </header>
+
+    </body>
+</html>

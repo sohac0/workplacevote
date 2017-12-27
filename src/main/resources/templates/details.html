@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User details</title>
+    </head>
+    <body>
+          <h1>My account: <span sec:authentication="name">Bob</span></h1>
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+
+
+        <h1>All ideas I have supported</h1>
+                
+            <div th:each="entry : ${suggestions}" style="display: in-line;">
+         
+                <div th:text="${entry.topic}">Suggestion topic</div>
+                <div><span th:text="${entry.description}">value</span></div>
+                <div>Likes: <span th:text="${#lists.size(entry.likedUsers)}">likes</span></div>
+                               
+            </div>
+
+        <p></p>
+    </body>
+</html>

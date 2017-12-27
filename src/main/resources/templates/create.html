@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Creating a new suggestion</title>
+    </head>
+    <body>
+        
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+    
+            <form action="#" th:action="@{/submit}" method="POST">
+            <p><label for="topic">Topic</label>: <input type="text" name="topic" id="topic"/></p>
+            <p><label for="description">Describe the activity</label>: <input type="text" name="description" id="description" cols="40" rows="5"/></p>
+            <p><input type="submit" value="Submit new idea" /></p>
+        </form>
+
+        
+
+    </body>
+</html>
