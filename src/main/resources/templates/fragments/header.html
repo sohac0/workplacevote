@@ -10,7 +10,13 @@
             	<ul>
                   <li><a th:href="@{/main}">Main</a></li>
 		  <li><a th:href="@{/details(username=${#authentication.getPrincipal().getUsername()})}">My account (<span sec:authentication="name">Bob</span>)</a></li>
+                  
+                  <!-- TODO: only show admin link (/admin) to users with ADMIN role -->
+                  <!-- TODO: remove silly comments leaking info like this -->
+                  
+                  <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}">Admin</a></li>
                   <li><a th:href="@{/logout}">Logout</a></li>
+                  
 		</ul>
         </header>
 

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -123,4 +124,29 @@ public class SuggestionController {
         }
         return userSuggestions;
     }
+    
+    
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(Authentication auth, Model model) {
+        model.addAttribute("suggestions", suggestionRepository.findAll());
+        
+        
+       // TODO: 
+       return "admin";
+        
+       
+    }
+    
+    @RequestMapping(value = "/admin/delete/{itemId}", method = RequestMethod.DELETE)
+    public String delete(Authentication auth, @PathVariable Long itemId) {
+        final Suggestion sugg = suggestionRepository.findById(itemId);
+       
+        if(sugg != null && auth.getName() != null) {
+              suggestionRepository.delete(sugg);
+        }
+        
+        return "redirect:/main";
+    }
+    
+
 }
