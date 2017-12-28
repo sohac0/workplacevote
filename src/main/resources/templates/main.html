@@ -20,8 +20,8 @@
                 
             <div th:each="entry : ${supported}" style="display: in-line;">
          
-                <div th:text="${entry.topic}">Suggestion topic</div>
-                <div><span th:text="${entry.description}">value</span></div>
+                <div th:text="${entry.topic}">topic</div>
+                <div><span th:utext="${entry.description}">value</span></div>
                 <div>Likes: <span th:text="${#lists.size(entry.likedUsers)}">likes</span></div>
                
                 
@@ -32,8 +32,8 @@
         
          <ul>
             <li th:each="entry : ${nonsupported}">
-                <div><b><span th:text="${entry.topic}">Suggestion topic</span></b></div>
-                <div><span th:text="${entry.description}">value</span></div>
+                <div><b><span th:text="${entry.topic}">topic</span></b></div>
+                <div><span th:utext="${entry.description}">description</span></div>
                 <div>Likes: <span th:text="${#lists.size(entry.likedUsers)}">likes</span></div>
                  <div><form th:action="@{/suggestions/like/{id}(id=${entry.id})}" th:method="POST"><input type="submit" value="Like"/></form></div>
      
