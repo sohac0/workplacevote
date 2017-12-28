@@ -82,6 +82,17 @@ public class SuggestionController {
         
         return "redirect:/main";
     }
+    
+    @RequestMapping(value = "/suggestions/info/{itemId}", method = RequestMethod.GET)
+    public String like(Model model, @PathVariable Long itemId) {
+        final Suggestion sugg = suggestionRepository.findById(itemId);
+        
+        if(sugg != null) {
+            model.addAttribute("item", sugg);
+        }
+        
+        return "info";
+    }
 
     private User getUser(Authentication auth) {
         User user = userRepository.findByUsername(auth.getName());

@@ -1,8 +1,9 @@
 package sec.project.domain;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -10,9 +11,11 @@ public class Suggestion extends AbstractPersistable<Long> {
 
 
     private String topic;
+    
+    @Column(length=50000)
     private String description;
     
-    @OneToMany
+    @ManyToMany
     private List<User> likedUsers;
 
     public Suggestion() {

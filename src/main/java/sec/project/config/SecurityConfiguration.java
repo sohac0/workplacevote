@@ -21,7 +21,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	http.csrf().disable();
+    	//http.csrf().disable();
+        
+        http.authorizeRequests().antMatchers("/**").hasAnyRole("USER");
+        
         
     	http.authorizeRequests().anyRequest().authenticated().and().formLogin().defaultSuccessUrl("/main")
     	
@@ -35,10 +38,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         final InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> mem = auth
                 .inMemoryAuthentication();
-    	   mem
-               .withUser("user").password("password").roles("USER");
+    	                  
            mem.withUser("alice").password("wonderland").roles("USER");
            mem.withUser("bob").password("uncle").roles("USER");
+           mem.withUser("boss").password("man").roles("USER", "ADMIN");
     }
 
     @Bean

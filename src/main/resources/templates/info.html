@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Main page</title>
+    </head>
+    <body>
+        
+        <h1>Hello, <span sec:authentication="name">Bob</span></h1>
+        
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+		  
+
+        
+        
+       
+
+        <h1>Topic: <span th:text="${item.topic}">topic text</span> </h1>
+                
+        <div><h3>Description:</h3></div>
+        <div><span th:utext="${item.description}">description</span></div>
+
+        <p></p>
+    </body>
+</html>

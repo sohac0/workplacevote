@@ -11,7 +11,8 @@
     
             <form action="#" th:action="@{/submit}" method="POST">
             <p><label for="topic">Topic</label>: <input type="text" name="topic" id="topic"/></p>
-            <p><label for="description">Describe the activity</label>: <input type="text" name="description" id="description" cols="40" rows="5"/></p>
+            <p><label for="description">Describe the activity</label>:</p>
+            <p><textarea name="description" id="description" cols="60" rows="10"/></p>
             <p><input type="submit" value="Submit new idea" /></p>
         </form>
 
