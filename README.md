@@ -101,3 +101,9 @@ Fix:
 1. Add `@EnableGlobalMethodSecurity(prePostEnabled = true)` before `public class SecurityConfiguration` in `src/main/java/sec/project/config/SecurityConfiguration.java`
 2. Add `@PreAuthorize("hasRole('ADMIN')")` before `admin(..)` and `delete(..)` methods in `src/main/java/sec/project/controller/SuggestionController.java`
 3. see that now only boss/man can access the page and delete Ideas.
+
+
+In a practical implementation it might be wise to tag all the methods for the intended roles so that an imperfect implementation to the general security configuration or login configuration will not expose unwanted functionalities. This issue tries to demonstrate that while comments are very useful for programmers when maintaining the software, it may be wise to limit the information in them. Perhaps an optimized production version of the app would even have all comments removed to reduce the amount of data transmitted to clients and to remove extra information that can be exploited by attackers.
+
+END DISCLAIMER: 
+The application is a bit silly and is only to be used for demonstrating the vulnerabilities. The application would require more features, improved database searches. You could probably DoS the current system by creating a lot of users and ideas. The database searches in the current version tend to process all suggestions from DB in memory at once, which should be replaced by more efficient parameterized queries. Data
